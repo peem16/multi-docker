@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t peem16/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run peem16/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t peem16/mulit-client ./client
+  - docker build -t peem16/mulit-nginx ./nginx
+  - docker build -t peem16/mulit-server ./server
+  - docker build -t peem16/mulit-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push peem16/mulit-client
+  - docker push peem16/mulit-nginx
+  - docker push peem16/mulit-server
+  - docker push peem16/mulit-worker
+
