@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion":2,
-  "containerDefinions":[
+  "containerDefinitions":[
     {
       "name":"client",
       "image":"peem16/multi-client",
