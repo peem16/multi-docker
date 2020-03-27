@@ -3,25 +3,25 @@
   "containerDefinitions":[
     {
       "name":"client",
-      "image":"peem16/multi-client",
+      "image":"peem16/mulit-client",
       "hostname":"client",
       "essential":false
     },
     {
       "name":"server",
-      "image":"peem16/multi-server",
+      "image":"peem16/mulit-server",
       "hostname":"api",
       "essential":false
     },
     {
       "name":"worker",
-      "image":"peem16/multi-worker",
+      "image":"peem16/mulit-worker",
       "hostname":"worker",
       "essential":false
     },
     {
       "name":"nginx",
-      "image":"peem16/multi-nginx",
+      "image":"peem16/mulit-nginx",
       "hostname":"nginx",
       "essential":true,
       "portMappings":[{
