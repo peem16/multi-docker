@@ -10,24 +10,24 @@ script:
   - docker run peem16/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t peem16/mulit-client ./client
-  - docker build -t peem16/mulit-nginx ./nginx
-  - docker build -t peem16/mulit-server ./server
-  - docker build -t peem16/mulit-worker ./worker
+  - docker build -t peem16/multi-client ./client
+  - docker build -t peem16/multi-nginx ./nginx
+  - docker build -t peem16/multi-server ./server
+  - docker build -t peem16/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push peem16/mulit-client
-  - docker push peem16/mulit-nginx
-  - docker push peem16/mulit-server
-  - docker push peem16/mulit-worker
+  - docker push peem16/multi-client
+  - docker push peem16/multi-nginx
+  - docker push peem16/multi-server
+  - docker push peem16/multi-worker
 
 deploy:
   edge: true
   provider: elastibeanstalk
   region: ap-southeast-1
-  app: mulit-docker
-  env: MulitDocker-env
+  app: multi-docker
+  env: MultiDocker-env
   bucket_name: elasticbeanstalk-ap-southeast-1-891401262083
   bucket_path: docker-multi
   on:
